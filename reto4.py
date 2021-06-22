@@ -1,7 +1,6 @@
 from os import system   #importar la libreria system
 import sys  #importar la libreria sys
 import math #importar la libreria math
-import json #importar la libreria csv
 
 def menu1(): #funcion menu 1
     opcion = int(input('\n' '1. Cambiar contraseña\n'   #solicitar la opcion a elegir
@@ -174,39 +173,39 @@ if nombre_usuario_2 == nombre_usuario:  #verificamos que el usuario exista
                         x1 = menu1()    #regresar al menu principal
                         continue
 
-                    elif contador2 > 0: #si es la segunda vez que se ingresa a la opcion 2...
-                        opcion_coordenada = int(input(f'coordenada [latitud,longitud] 1: {matriz_1[0]}\n'   #solicitar la eleccion de la coordenada a actualizar
+                    elif contador2 > 0:
+                        opcion_coordenada = int(input(f'coordenada [latitud,longitud] 1: {matriz_1[0]}\n'
                                                       f'coordenada [latitud,longitud] 2: {matriz_1[1]}\n'
                                                       f'coordenada [latitud,longitud] 3: {matriz_1[2]}\n'
                                                       'La coordenada 1 es la que esta mas al norte\n'
                                                       'La coordenada 2 es la que esta mas al sur\n'
                                                       'Presione 1, 2 o 3 para actualizar la respectiva coordenada\n'
                                                       'Presiones 0 para regresar al menu: '))
-                        if opcion_coordenada == 1:  #si la opcion elegida es la 1...
-                            latitud = float(input('ingrese la latitud: '))  #ingresar la latitud
-                            if (latitud == False):  #si la opcion ingresada esta vacia...
-                                print('Error coordenada')   #imprimir error
-                                sys.exit()  #terminar el programa
-                            elif (limites_latitud[0] < latitud) and (limites_latitud[1] > latitud): #si los limites de la latitud ingresada son correctos...
-                                matriz_1[0].append(latitud) #agregar la latitud a la matriz 1
-                                matriz_1[0].pop(0)  #eliminar el primer elemento de la primera lista de la matriz 1 
-                                longitud = float(input('ingrese la longitud: '))    #ingresar la longitud
-                                if (longitud == False): #si la opcion ingresada esta vacia...
-                                    print('Error coordenada')   #imprimir error
-                                    sys.exit()  #terminar el programa
-                                elif (limites_longitud[0] < longitud) and (limites_longitud[1] > longitud): #si los limites de la longitud ingresada son correctos...
-                                    matriz_1[0].append(longitud)    #agregar la longitud a la matriz 1
-                                    matriz_1[0].pop(0)  #eliminar el primer elemento de la primera lista de la matriz 1
-                                    x1 = menu1()    #mostrar el menu principal
+                        if opcion_coordenada == 1:
+                            latitud = float(input('ingrese la latitud: '))
+                            if (latitud == False):
+                                print('Error coordenada')
+                                sys.exit()
+                            elif (limites_latitud[0] < latitud) and (limites_latitud[1] > latitud):
+                                matriz_1[0].append(latitud)
+                                matriz_1[0].pop(0)
+                                longitud = float(input('ingrese la longitud: '))
+                                if (longitud == False):
+                                    print('Error coordenada')
+                                    sys.exit()
+                                elif (limites_longitud[0] < longitud) and (limites_longitud[1] > longitud):
+                                    matriz_1[0].append(longitud)
+                                    matriz_1[0].pop(0)
+                                    x1 = menu1()
                                     continue
                                 else:
-                                    print('Error actualización')    #si los coordenadas estan por fuera de los limites...
-                                    sys.exit()  #terminar programa
+                                    print('Error actualización')
+                                    sys.exit()
                             else:
-                                print('Error actualización')    #si los coordenadas estan por fuera de los limites...
-                                sys.exit()  #terminar programa
+                                print('Error actualización')
+                                sys.exit()
 
-                        elif opcion_coordenada == 2:    #igual procedimiento que el anterior if
+                        elif opcion_coordenada == 2:
                             latitud = float(input('ingrese la latitud: '))
                             if (latitud == False):
                                 print('Error coordenada')
@@ -231,7 +230,7 @@ if nombre_usuario_2 == nombre_usuario:  #verificamos que el usuario exista
                                 print('Error actualización')
                                 sys.exit()
 
-                        elif opcion_coordenada == 3:    #igual procedimiento que el anterior elif
+                        elif opcion_coordenada == 3:
                             latitud = float(input('ingrese la latitud: '))
                             if (latitud == False):
                                 print('Error coordenada')
@@ -300,11 +299,11 @@ if nombre_usuario_2 == nombre_usuario:  #verificamos que el usuario exista
                             indicaciones = int(input('Elija 1 o 2 para recibir indicaciones de llegada: ')) #solicitar una de las 2 ubicaciones
 
                             if (indicaciones == 1): #verificar si se escogio la opcion 1
-                                print(f'Para llegar a la zona 1 wifi dirigirse primero al {matriz_3[0][3][0]} y luego hacia el {matriz_3[0][3][1]}')   #imprimir indicaciones de llegada
+                                print(f'“Para llegar a la zona 1 wifi dirigirse primero al {matriz_3[0][3][0]} y luego hacia el {matriz_3[0][3][1]}')   #imprimir indicaciones de llegada
                                 print('El tiempo promedio en bus es:', (matriz_3[0][2]/16.67), '\n'  #imprimir indicaciones tiempo
                                       'El tiempo promedio a pie es:', (matriz_3[0][2]/0.483))    #imprimir indicaciones de tiempo
                             elif (indicaciones == 2):
-                                print(f'Para llegar a la zona 2 wifi dirigirse primero al {matriz_3[1][3][0]} y luego hacia el {matriz_3[1][3][1]}')   #imprimir indicaciones de llegada
+                                print(f'“Para llegar a la zona 2 wifi dirigirse primero al {matriz_3[1][3][0]} y luego hacia el {matriz_3[1][3][1]}')   #imprimir indicaciones de llegada
                                 print('El tiempo promedio en bus es:', (round(matriz_3[1][2] / 16.67)), '\n'    #imprimir indicaciones de tiempo
                                       'El tiempo promedio a pie es:', (round(matriz_3[1][2]) / 0.483)) #imprimir indicaciones de tiempo
                             else:
@@ -318,67 +317,42 @@ if nombre_usuario_2 == nombre_usuario:  #verificamos que el usuario exista
                                     salir = False
 
                     else:
-                        print('Error sin registro de coordenadas')  #imprimir error
-                        break   #Terminar programa
+                        print('Error sin registro de coordenadas')
+                        break
 
-                elif x1 == 4:   #Elegir la opcion 4...
-                    if (contador2 > 0) & (len(matriz_3) > 0):   #verificamos que se hayan ingresado coordenadas al menos una vez, y que la matriz 3 no este vacia
-                        informacion = { #creamos la matriz de ubicacion con diccionarios
-                                       'actual': [matriz_1[coordenadas_frecuentes - 1][0], matriz_1[coordenadas_frecuentes - 1][1]],
-                                       'zonawifi1' : [matriz_3[indicaciones - 1][1][0], matriz_3[indicaciones - 1][1][1], matriz_3[indicaciones - 1][0]],
-                                       'recorrido' : [matriz_3[indicaciones - 1][2], 'Bus', (round(matriz_3[1][2] / 16.67))]
-                                       }
-                        print(informacion)  #imprimimos la matriz informacion
-                        seleccionar = input('¿Esta de acuerdo con la informacion a exportar? Presione 1 para confirmar, 0 para regresar al menú principal?')    #solicitar ingreso opcion
-                        if seleccionar == '1':  #si selecciona la opcion 1...
-                            print('Exportando archivo') #imprimir exportando archivo
-                            data_json = json.dumps(informacion) #proceso de exportacion
-                            archivo_json = open("informacion.json", "w")
-                            archivo_json.write(data_json)
-                            archivo_json.close()
-                            break
+                elif x1 == 4:
+                    print(f'Usted ha elegido la opción {x1}')
+                    break
 
-                        elif seleccionar == '0':    #si selecciona la opcion 0...
-                            x1 = menu1()    #regresar al menu principal
-                    else:
-                        print('Error de alistamiento')  #si no se han ingresado coordenadas o la matriz 3 esta vacia, imprimir error
-                        break   #terminar programa
+                elif x1 == 5:
+                    print(f'Usted ha elegido la opción {x1}')
+                    break
 
-                elif x1 == 5:   #si ingresamos a la opcion 5...
+                elif x1 == 6:
 
-                    #f = open(r"C:\Users\zebas\OneDrive\Escritorio\Mision TIC 2022\informacion.json", "r")   #proceso de importacion de archivo
-                    #content = f.read()
-                    #jsondecoded = json.loads(content)
+                    x6 = selec_opc()
 
-                    seleccionar = input('Datos de coordenadas para zonas wifi actualizados, presione 0 para regresar al menú principal: ')  #solicitar ingreso de opcion
-                    if seleccionar == '0':   #si selecciona 0...
-                        x1 = menu1()    #regresar al menu principal
+                    if x6 > 5 or x6 <= 0:
+                        print('Error')
+                        break
 
-                elif x1 == 6:   #si ingresa a la opcion 6...
+                    if x6 <= 5:
 
-                    x6 = selec_opc()    #llamamos a la funcion seleccionar opcion
+                        x7 = adivinanza1()
 
-                    if x6 > 5 or x6 <= 0:   #si la opcion general esta fuera del rango 0, 5...
-                        print('Error')  #imprimir error
-                        break   #Salir del programa
+                        if x7 == 1:
 
-                    if x6 <= 5: #si la opcion x6...
+                            x8 = adivinanza2()
 
-                        x7 = adivinanza1()  #llamar a la funcion adivinanza
+                            if x8 == 7:
 
-                        if x7 == 1: #si es correcta la respuesta...
-
-                            x8 = adivinanza2()  #llamar a la funcion adivinanza 2
-
-                            if x8 == 7: #si la respuesta es correcta
-
-                                if x6 == 1: #si la opcion elegida es 1...
-                                    system("cls")   #borrar consola
-                                    x1 = menu1()    #llamar la funcion menu ppal
-                                    print(f'Usted ha elegido la opción {x1}')   #imprimir la opcion elegida
+                                if x6 == 1:
+                                    system("cls")
+                                    x1 = menu1()
+                                    print(f'Usted ha elegido la opción {x1}')
                                     break
 
-                                elif x6 == 2:   #se repite el proceso anterior llamando a la respectiva funcion menu
+                                elif x6 == 2:
                                     system("cls")
                                     x1 = menu2()
                                     print(f'Usted ha elegido la opción {x1}')
@@ -410,8 +384,8 @@ if nombre_usuario_2 == nombre_usuario:  #verificamos que el usuario exista
                             print('Error')
                             continue
 
-                elif x1 == 7:   #si se elige la opcion 7...
-                    salir = True    #salimos del programa con salir=True
+                elif x1 == 7:
+                    salir = True
                     print('Hasta pronto')
 
         else:
